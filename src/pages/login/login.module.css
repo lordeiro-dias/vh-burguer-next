@@ -1,0 +1,87 @@
+.titulu
+{
+}
+
+#telaInteira
+{
+    max-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    background-color: var(--fundo-claro);
+}
+
+#telaInteira img
+{
+    max-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.campo_form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.campo_form label{
+    font-weight: 500;
+    color: var(--fonte-escura);
+} 
+
+.inputs
+{
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0);
+    height: 45px;
+    padding: 0 18px;
+    outline: none;
+    font-size: 16px;
+}
+
+#divisaoFormulario
+{
+    width: 70%;
+}
+
+#centralizarLogin
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#centralizarLogin h1
+{
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    color: var(--laranja-destaque);
+    font-weight: 500;
+}
+
+#esqueceuSenha {
+    display: block;
+    text-align: right;
+    margin: 6px 0 26px;
+    text-decoration: none;
+    color: var(--vinho);
+    font-weight: 500;
+}
+
+.botaoEntrar
+{
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 10px;
+    background: var(--laranja-destaque);
+    color: var(--vinho);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* laranjo #FFA300 */
