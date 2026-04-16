@@ -8,6 +8,7 @@
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     background-color: var(--fundo-claro);
+
 }
 
 #telaInteira img
@@ -52,6 +53,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
 }
 
 #centralizarLogin h1
@@ -61,6 +63,7 @@
     text-align: center;
     color: var(--laranja-destaque);
     font-weight: 500;
+    font-size: var(--tamanho-titulo);
 }
 
 #esqueceuSenha {
@@ -82,6 +85,7 @@
     color: var(--vinho);
     font-weight: 700;
     cursor: pointer;
+    font-size: var(--tamanho-texto-btn);
 }
 
 /* laranjo #FFA300 */

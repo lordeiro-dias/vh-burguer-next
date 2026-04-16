@@ -5,7 +5,7 @@ const Login = () => {
     return(
         <>
             <main id={styles.telaInteira}>
-                <img src="/imgs/hamburguer_login.png" alt="" />
+                <img src="/imgs/hamburguer_login.png" alt="Imagem de um hambúrguer caindo com os ingredientes espaçados em um fundo escuro." />
                 <div id={styles.centralizarLogin}>
 
                     <h1 className={styles.titulu}>Login</h1>

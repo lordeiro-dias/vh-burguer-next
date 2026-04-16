@@ -12,4 +12,12 @@
     --laranja-destaque: #FFA300;
     --vinho: #451201;
     --fonte-escura: #000000;
+
+    --tamanho-titulo: 50px;
+    --tamanho-texto-btn: 17px;
+}
+
+.layout_guide
+{
+    width: 80%;
 }
