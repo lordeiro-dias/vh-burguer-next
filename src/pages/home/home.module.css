@@ -1,0 +1,139 @@
+/* SECTION BANNER */
+#banner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--fundo-claro);
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+
+#banner h1{
+    color: var(--laranja-destaque);
+    font-weight: 500;
+    font-size: 80px;
+}
+
+#botoes{
+    display: flex;
+    gap: 30px;
+    width: 40vw;
+    align-items: center;
+}
+
+#botoes button{
+    background-color: var(--laranja-destaque);
+    color: var(--vinho);
+    border: none;
+    border-radius: 10px;
+    width: 50%;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#botoes a{
+    display: flex;
+    background-color: var(--vinho);
+    color: var(--laranja-destaque);
+    border-radius: 10px;
+    text-decoration: none;
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* SECTION DESTAQUES */
+#destaques{
+    display: flex;
+    background-color: var(--fundo-escuro);
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    gap: 15px;
+}
+
+#alinhaImagem{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.ajustarTexto{
+    position: relative;
+}
+
+.ajustarTexto img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.texto_sobreposto1{
+    position: absolute;
+    color: var(--fonte-clara);
+    bottom: 40px;
+    left: 20px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.texto_sobreposto2{
+    position: absolute;
+    color: var(--fonte-clara);
+    bottom: 5px;
+    left: 20px;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.texto_sobreposto_direita1{
+    position: absolute;
+    color: var(--fonte-clara);
+    bottom: 40px;
+    right: 20px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.texto_sobreposto_direita2{
+    position: absolute;
+    color: var(--fonte-clara);
+    bottom: 5px;
+    right: 20px;
+    padding: 10px;
+    font-size: 30px;
+}
+
+/* SECTION UNIDADES */
+#unidades{
+    height: 60vh;
+    background-image: url('/imgs/unidade.jpeg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#titulo{
+    color: var(--fonte-clara);
+    font-size: 40px;
+    text-align: center;
+}
+
+#unidades ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: var(--fonte-clara);
+    font-size: 20px;
+    list-style-type: disc;
+}
