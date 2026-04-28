@@ -22,19 +22,38 @@
 
 #descricao{
     padding: 50px 0px 50px 0px;
+    background-color: #FFFFFF;
 }
 
 #descricao p{
     font-size: 18px;
     text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 15px;
 }
 
 #preco{
-    color: var(--laranja-destaque);
-    background-color: var(--vinho);
     text-align: center;
-    font-size: 22px;
     font-weight: 600;
     padding: 10px 0 10px 0;
+}
+
+#icones{
+    display: flex;
+    background-color: var(--vinho);
+    justify-content: space-around;
+    align-items: center;
+    color: var(--laranja-destaque);
+    font-size: 22px;
     border-radius: 0 0 10px 10px;
+}
+
+#icones button{
+    background: none;
+    border: none;
+    color: var(--laranja-destaque);
+    font-size: 22px;
+    cursor: pointer;
 }

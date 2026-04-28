@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <>
             <Header/>
-            <main>
+            <main id={sytles.main}>
                 <section id={sytles.banner}>
                     <h1>BEM-VINDO AO VH BURGUER</h1>
                     <img src="/imgs/foto_de_hamburgueres.png" alt="Três hambúrgueres, um ao lado do outro"/>
@@ -18,7 +18,7 @@ const Home = () => {
                         <a href="">Ver cardápio</a>
                     </div>
                 </section>
-                <section id={sytles.destaques}>
+                <section className={sytles.destaques} id="destaques">
                         <div className={sytles.ajustarTexto}>
                             <img src="/imgs/mais_pedidos.png" alt="" />
                             <div className={sytles.texto_sobreposto1}>Os queridinhos da galera</div>
@@ -37,12 +37,12 @@ const Home = () => {
                             </div>
                         </div>
                 </section>
-                <section id={sytles.cardapio}>
-                    <h2>Cardápio</h2>
+                <section className={sytles.cardapio} id="cardapio">
+                    <h2>CARDÁPIO</h2>
                     {/* CHAMAR COMPONENTE DA LISTA */}
                     <Lista_Produto/>
                 </section>
-                <section id={sytles.unidades}>
+                <section className={sytles.unidades} id="unidades">
                     <p id={sytles.titulo}>Nossas Unidades</p>
                     <ul>
                         <li>Centro – Av. Aurora, 742</li>

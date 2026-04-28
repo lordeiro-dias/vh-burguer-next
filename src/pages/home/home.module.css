@@ -1,3 +1,7 @@
+#main{
+    background-color: var(--fundo-claro);
+}
+
 /* SECTION BANNER */
 #banner{
     display: flex;
@@ -49,7 +53,7 @@
 }
 
 /* SECTION DESTAQUES */
-#destaques{
+.destaques{
     display: flex;
     background-color: var(--fundo-escuro);
     align-items: center;
@@ -112,7 +116,7 @@
 }
 
 /* SECTION UNIDADES */
-#unidades{
+.unidades{
     height: 60vh;
     background-image: url('/imgs/unidade.jpeg');
     background-size: cover;
@@ -121,6 +125,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    margin-top: 80px;
 }
 
 #titulo{
@@ -129,11 +134,56 @@
     text-align: center;
 }
 
-#unidades ul{
+.unidades ul{
     display: flex;
     flex-direction: column;
     gap: 20px;
     color: var(--fonte-clara);
     font-size: 20px;
     list-style-type: disc;
+}
+
+/* SECTION CARDÁPIO*/
+.cardapio
+{
+    margin-top: 50px;
+    background-color: var(--fundo-claro);
+}
+
+.cardapio h2
+{
+    text-align: center;
+    color: var(--laranja-destaque);
+    font-size: 70px;
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px){
+    /* BANNER */
+    #banner h1{
+        font-size: 40px;
+    }
+
+    #banner img{
+        width: 100%;
+    }
+
+    #botoes{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 40vw;
+    }
+
+    #botoes button{
+        width: 100%;
+    }
+
+    #botoes a{
+        width: 100%;
+    }
 }

@@ -1,16 +1,70 @@
-#container{
-    display: flex;
-    flex-direction: column;
+#listagem{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: center;
     justify-content: center;
-    background-color: var(--fundo-claro);
+    list-style: none;
+    gap: 90px;
 }
 
-#listagem{
+#alinhamento{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    list-style: none;
-    gap: 60px;
+    flex-direction: column;
+}
+
+#botaoFiltrar{
+    border: none;
+    border-radius: 10px;
+    color: var(--fonte-escura);
+    background-color: var(--laranja-destaque);
+    font-size: 17px;
+    padding: 10px 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.outrosBotoes{
+    border: none;
+    border-radius: 10px;
+    color: var(--fonte-escura);
+    background-color: var(--laranja-destaque);
+    font-size: 17px;
+    padding: 10px 30px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#alinharBotoes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 50px;
+}
+
+#alinharBotoes2{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px){
+    #listagem{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        gap: 21px;
+    }
 }

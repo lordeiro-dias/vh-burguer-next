@@ -1,0 +1,51 @@
+#main{
+    background-color: var(--fundo-claro);
+    min-height: 70vh;
+}
+
+#main h1{
+    color: var(--laranja-destaque);
+    font-weight: 500;
+}
+
+#alinharTabela{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tabela{
+    width: 60%;
+}
+
+#tabela tr{
+    display: flex;
+    justify-content: space-around;
+}
+
+#separarLinhas{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#linhaPersonalizada{
+    border: none;
+    height: 2px;
+    width: 100%;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+
+#tabela tr th{
+    font-size: 18px;
+    font-weight: 300;
+} 
+
+#tabela tr td{
+    font-size: 18px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
