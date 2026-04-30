@@ -39,35 +39,14 @@
     padding-left: 2%;
 }
 
-#alinharBotoes{
-    color: var(--vinho);
-    display: flex;
-    gap: 2vw;
-}
-
 #botaoSalvar{
     border: none;
     border-radius: 10px;
     height: 38px;
-    width: 14vw;
+    width: 18vw;
     gap: 1vw;
     cursor: pointer;
     font-size: 18px;
     font-weight: 500;
     background-color: var(--laranja-destaque);
-}
-
-#botaoCancelar{
-    border: 1px solid var(--laranja-destaque);
-    border-radius: 10px;
-    padding: 8px 5vw;
-    gap: 1vw;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-}
-
-#botaoCancelar:visited{
-    color: var(--vinho);
 }

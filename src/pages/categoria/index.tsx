@@ -4,18 +4,29 @@ import styles from './categoria.module.css'
 import Link from 'next/link'
 import { useState } from "react"
 import { cadastrarCategoria } from '../api/categoriaService';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Categoria = () => {
 
     const [categoria, setCategoria]  = useState<string>("");
 
-    function cadastrar(e: React.FormEvent<HTMLFormElement>){
+    const notificacao = (msg: string) => toast.success(msg);
+    const erro = (msg: string) => toast.error(msg);
+
+    async function cadastrar(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
-        cadastrarCategoria(categoria);
+        try{
+            await cadastrarCategoria(categoria);
+            notificacao("Cadastro realizado com sucesso.");
+        }
+        catch(error: any){
+            erro(error.message);
+        }
     }
 
     return(
         <>
+            <ToastContainer/>
             <Sub_Header/>
                 <main id={styles.main}>
                     <h1>CRIAR CATEGORIA</h1>
@@ -26,7 +37,6 @@ const Categoria = () => {
                         </div>
                         <div id={styles.alinharBotoes}>
                             <button id={styles.botaoSalvar} type="submit">Salvar</button>
-                            <Link href='/produto' id={styles.botaoCancelar}>Cancelar</Link>
                         </div>
                     </form>
                 </main>
