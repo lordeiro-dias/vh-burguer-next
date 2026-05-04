@@ -1,15 +1,45 @@
 import Footer from '@/components/footer/footer'
 import styles from './detalhe_produto.module.css'
 import Sub_Header from '@/components/sub-header/sub_header'
+import { useEffect, useState } from 'react'
+import { listarPorId } from '@/pages/api/produtoService'
+import { useParams } from 'next/navigation'
+
+interface Produto{
+    nome: string,
+    descricao: string,
+    preco: number,
+    imagemUrl: string
+}
 
 const Detalhe_Produto = () => {
+
+    const[produto, setProduto] = useState<Produto>();
+
+    const {id} = useParams();
+
+    async function listarProduto() {
+        try{
+            const response = await listarPorId(Number(id));
+            console.log(response);
+            setProduto(response);
+        }
+        catch(error: any){
+            console.log(error.message);
+        }
+    }
+
+    useEffect(() =>{
+        listarProduto();
+    }, [])
+
     return(
         <>
             <Sub_Header/>
                 <main id={styles.main}>
                     <div id={styles.cardDetalhe}>
                         <div id={styles.centralizarImg}>
-                            <h1>DETALHES DO X-BACON</h1>
+                            <h1>DETALHES DO {produto?.nome.toUpperCase()}</h1> 
                             <img src="/imgs/HamburguerAlcatraComBacon.png" alt="Hambúrguer de Alcatra com bacon em cima de uma tábua de madeira"/>
                         </div>
 
@@ -17,11 +47,11 @@ const Detalhe_Produto = () => {
                             <div id={styles.esquerda}>
                                 <div>
                                     <p className={styles.titulo}>Nome do Produto</p>
-                                    <p className={styles.textos}>Monstro</p>
+                                    <p className={styles.textos}>{produto?.nome}</p>
                                 </div>
                                 <div id={styles.descricao}>
                                     <p className={styles.titulo}>Descrição</p>
-                                    <p className={styles.textos}>Um pão brioche macio segura a fera: duas (ou três) carnes altas e suculentas, queijo cheddar derretido escorrendo pelas laterais, bacon crocante, cebola caramelizada no ponto adocicado, alface fresca, tomate e um molho especial intenso que amarra tudo. Para completar o ataque, uma camada extra de onion rings ou molho defumado que transforma cada mordida numa explosão.</p>
+                                    <p className={styles.textos}>{produto?.descricao}</p>
                                 </div>
                             </div>
 
@@ -30,7 +60,7 @@ const Detalhe_Produto = () => {
                                     <p className={styles.titulo}>Preço (R$)</p>
                                     <div id={styles.alinhaTexto}>
                                         <p className={styles.textos} id={styles.riscado}>R$45,00</p>
-                                        <p className={styles.textos}>R$35,00</p>
+                                        <p className={styles.textos}>{produto?.preco}</p>
                                     </div>
                                 </div>
                                 <div>
