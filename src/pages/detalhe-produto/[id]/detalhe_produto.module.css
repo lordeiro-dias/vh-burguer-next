@@ -23,8 +23,9 @@
     font-weight: 500;
 }
 
-#cardDetalhe img{
-    width: 60%;
+#centralizarImg img{
+    width: 40vw;
+    height: 50vh;
     border-radius: 15px;
     margin-bottom: 40px;
 }

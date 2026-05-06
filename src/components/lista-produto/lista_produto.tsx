@@ -1,15 +1,18 @@
-import { listarProduto } from '@/pages/api/produtoService'
+import { excluirProduto, listarProduto } from '@/pages/api/produtoService'
 import Card_Produto from '../card-produto/card_produto'
 import styles from './lista_produto.module.css'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { erro, notificacao, toastConfirmarExclusao } from '@/utils/toast'
+import { ToastContainer } from 'react-toastify'
 
 type Produto = {
     produtoID: number,
     nome: string,
     descricao: string,
     preco: number,
-    imagemUrl: string
+    imagemUrl: string,
+    statusProduto: boolean
 }
 
 const Lista_Produto = () => {
@@ -20,11 +23,30 @@ const Lista_Produto = () => {
         try{
             const lista = await listarProduto();
             setProdutos(lista);
-            console.log(lista);
         }
         catch(error: any){
             console.log(error.message);
         }
+    }
+
+    function confirmarExclusao(produtoId: number){
+        toastConfirmarExclusao(async () => {
+            try{
+                await excluirProduto(produtoId);
+                setProdutos((listaAtual) => ( 
+                    listaAtual.map((produto) => ( 
+                        produto.produtoID === produtoId 
+                        ? {...produto, statusProduto: false}
+                        : produto 
+                    ))))
+
+                notificacao("Produto inativado");
+                listar();
+            }   
+            catch(error: any){
+                erro(error.message);
+            }
+        })
     }
 
     useEffect(() => {
@@ -53,6 +75,7 @@ const Lista_Produto = () => {
                                     descricao={item.descricao}
                                     preco={item.preco}
                                     imagem={item.imagemUrl}
+                                    onDelete={confirmarExclusao}
                                 />
                             </li>
                         )) : (

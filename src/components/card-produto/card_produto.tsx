@@ -9,10 +9,12 @@ interface Produto{
     descricao: string,
     preco: number,
     imagem: string,
-    produtoID: number
+    produtoID: number,
+    //criando uma props que recebe uma função
+    onDelete: (produtoId: number) => void
 }
 
-const Card_Produto = ({titulo, descricao, preco, imagem, produtoID} : Produto) => {
+const Card_Produto = ({titulo, descricao, preco, imagem, produtoID, onDelete } : Produto) => {
     return(
         <>
             <article id={styles.card}>
@@ -25,9 +27,9 @@ const Card_Produto = ({titulo, descricao, preco, imagem, produtoID} : Produto) =
                 </div>
                 <div id={styles.icones}>
                     <p id={styles.preco}>{formatarPreco(preco)}</p>
-                    <button><FontAwesomeIcon icon={faCircleInfo} /></button>
-                    <button><FontAwesomeIcon icon={faPenToSquare} /></button>
-                    <button><FontAwesomeIcon icon={faTrashCan} /></button>
+                    <Link href={"/historico/" + produtoID} className={styles.botoesLink}><FontAwesomeIcon icon={faCircleInfo} /></Link>
+                    <Link href={"/produto?id=" + produtoID} className={styles.botoesLink}><FontAwesomeIcon icon={faPenToSquare} /></Link>
+                    <button onClick={() => onDelete(produtoID)}><FontAwesomeIcon icon={faTrashCan} /></button>
                 </div>
             </article>
         </>
