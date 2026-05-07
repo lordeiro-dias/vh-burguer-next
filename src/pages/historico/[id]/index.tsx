@@ -6,6 +6,8 @@ import { useEffect, useState } from "react"
 import { erro } from "@/utils/toast"
 import { listarPorIdDoProduto } from "@/pages/api/logProdutoService"
 import { useParams } from "next/navigation"
+import { verificarAutenticacao } from "@/utils/auth"
+import { useRouter } from 'next/router'
 
 type HistoricoAlteracao = {
     logID: number,
@@ -21,6 +23,10 @@ const Historico = () => {
     const params = useParams();
     const id = params?.id;
 
+    const[estaAutenticado, setEstaAutenticado] = useState(false);
+    
+    const router = useRouter();
+
     async function listarHistorico(){
         try{
             const lista = await listarPorIdDoProduto(Number(id));
@@ -33,12 +39,23 @@ const Historico = () => {
     }
 
     useEffect(() =>{
+        if(!verificarAutenticacao()){
+            router.push("/home");
+        }
+        else{
+            setEstaAutenticado(true);
+        }
+
         if(!id) return;
 
         setTimeout(() =>{
             listarHistorico();
         }, 1000);
     }, [id])
+
+    if(!estaAutenticado){
+        return null;
+    }
 
     return(
         <>
@@ -58,7 +75,6 @@ const Historico = () => {
                                     <th>Nome anterior</th>
                                     <th>Preço Anterior</th>
                                 </tr>
-                                <div id={styles.linhaPersonalizada}><hr /></div>
                             </thead>
                             <tbody id={styles.separarLinhas}>
                                 {historico.map((item) => (

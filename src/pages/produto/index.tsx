@@ -9,6 +9,7 @@ import { erro, notificacao } from '@/utils/toast'
 import Toast from '@/components/toast/toast'
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/router'
+import { verificarAutenticacao } from '@/utils/auth'
 
 interface Categoria {
     categoriaID: number,
@@ -25,6 +26,7 @@ const Produto = () =>{
     const[imagem, setImagem] = useState<File | null>(null);
     const[categoriaSelecionada, setCategoriaSelecionada] = useState<number[]>([]);
     //const[telaEditar, setTelaEditar] = useState<Boolean>();
+    const[estaAutenticado, setEstaAutenticado] = useState(false);
 
     const router = useRouter();
     const id = router.query.id;
@@ -82,9 +84,20 @@ const Produto = () =>{
 
     // quando produto for renderizado, a função listarCategoriaEmProduto acontece
     useEffect(() =>{
+        if(!verificarAutenticacao()){
+            router.push("/home");
+        }
+        else{
+            setEstaAutenticado(true);
+        }
+
         listarCategoriaEmProduto();
         carregarInformacoes();
     }, [])
+
+    if(!estaAutenticado){
+        return null;
+    }
 
     return(
         <>

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { erro, notificacao, toastConfirmarExclusao } from '@/utils/toast'
 import { ToastContainer } from 'react-toastify'
+import { verificarAutenticacao } from '@/utils/auth'
 
 type Produto = {
     produtoID: number,
@@ -13,11 +14,18 @@ type Produto = {
     preco: number,
     imagemUrl: string,
     statusProduto: boolean
+    estaLogado: boolean
 }
 
 const Lista_Produto = () => {
 
     const[produtos, setProdutos] = useState<Produto[]>([]);
+
+    const[ordem, setOrdem] = useState("todos");
+    //salvar o que foi escrito pelo usuário
+    const[pesquisa, setPesquisa] = useState("");
+    //salva a info do usuário logado
+    const[estaAutenticado, setEstaAutenticado] = useState(false);
 
     async function listar(){
         try{
@@ -50,24 +58,49 @@ const Lista_Produto = () => {
     }
 
     useEffect(() => {
+        setEstaAutenticado(verificarAutenticacao());
         listar();
     },[])
+
+    const produtosFiltrados = produtos.filter((e) => 
+    e.nome.toLowerCase().includes(pesquisa.toLowerCase()))
+    .sort((a, b) => {
+        if(ordem === "menor_valor")
+        {
+            return a.preco - b.preco
+        }
+        else if(ordem === "maior_valor")
+        {
+            return b.preco - a.preco
+        }
+
+        return a.produtoID - b.produtoID;
+    });
 
     return(
         <>
             <div className={`${styles.container}`}>
 
                 <div id={styles.alinharBotoes}>
-                    <button id={styles.botaoFiltrar}>Filtrar <img src="./imgs/filtrar.svg" alt="" /></button>
-                    <div id={styles.alinharBotoes2}>
+                    <select id={styles.botaoFiltrar} value={ordem} onChange={(e) => setOrdem(e.target.value)}>Filtar
+                        <option value="todos">Todos</option>
+                        <option value="menor_valor">Menor valor</option>
+                        <option value="maior_valor">Maior valor</option>
+                    </select>
+                    <div>
+                        <label htmlFor="">Pesquise</label>
+                        <input type="text" name="pesquisa" id="" placeholder="Digite o nome do produto" onChange={(e) => {setPesquisa(e.target.value)}}/>
+                    </div>
+                    {estaAutenticado && ( <div id={styles.alinharBotoes2}>
                         <Link className={styles.outrosBotoes} href="/promocoes">Promoções</Link>
                         <Link className={styles.outrosBotoes} href="/produto">Adicionar Produto</Link>
-                    </div>
+                    </div>)}
+                    
                 </div>
 
                 <div id={styles.alinhamento}>
                     <ul id={styles.listagem}>
-                        {produtos.length > 0 ? produtos.map((item) =>(
+                        {produtosFiltrados.length > 0 ? produtosFiltrados.map((item) =>(
                             <li key={item.produtoID}>
                                 <Card_Produto
                                     produtoID={item.produtoID}
@@ -75,6 +108,7 @@ const Lista_Produto = () => {
                                     descricao={item.descricao}
                                     preco={item.preco}
                                     imagem={item.imagemUrl}
+                                    estaLogado={estaAutenticado}
                                     onDelete={confirmarExclusao}
                                 />
                             </li>
