@@ -84,16 +84,19 @@ const Produto = () =>{
 
     // quando produto for renderizado, a função listarCategoriaEmProduto acontece
     useEffect(() =>{
+        if(!router.isReady) return;
+        
         if(!verificarAutenticacao()){
             router.push("/home");
+            return;
         }
-        else{
             setEstaAutenticado(true);
-        }
 
-        listarCategoriaEmProduto();
-        carregarInformacoes();
-    }, [])
+            listarCategoriaEmProduto();
+            
+            carregarInformacoes();
+
+    }, [router.isReady, id])
 
     if(!estaAutenticado){
         return null;
